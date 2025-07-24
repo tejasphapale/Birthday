@@ -69,7 +69,7 @@
     }
 
     .container {
-      background: #fff;
+      background: linear-gradient(135deg,#f0b4b4fc, #a0d290cc);
       padding: 40px 25px;
       border-radius: 20px;
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
@@ -127,44 +127,28 @@
       box-shadow: 0 6px 16px rgba(160, 108, 213, 0.4);
     }
 
-    /* Floating Hearts */
-.floating-heart {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 30px;
-  opacity: 0;
-  pointer-events: none;
-  animation: floatOut var(--duration, 6s) ease-in-out forwards;
-  color: #ff4b91;
-  filter: drop-shadow(0 0 12px rgba(255, 105, 180, 0.5));
-  z-index: 0;
-  will-change: transform, opacity;
-}
+    .floating-heart {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 30px;
+      opacity: 0;
+      pointer-events: none;
+      animation: floatOut var(--duration, 6s) ease-in-out forwards;
+      color: #ff4b91;
+      filter: drop-shadow(0 0 12px rgba(255, 105, 180, 0.5));
+      z-index: 0;
+      will-change: transform, opacity;
+    }
 
-@keyframes floatOut {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
-  }
-  15% {
-    opacity: 1;
-  }
-  50% {
-    transform: translate(var(--xMid), var(--yMid)) scale(1.3) rotate(180deg);
-    opacity: 0.9;
-  }
-  100% {
-    transform: translate(var(--x), var(--y)) scale(2.2) rotate(720deg);
-    opacity: 0;
-  }
-}
+    @keyframes floatOut {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5) rotate(0deg); }
+      15% { opacity: 1; }
+      50% { transform: translate(var(--xMid), var(--yMid)) scale(1.3) rotate(180deg); opacity: 0.9; }
+      100% { transform: translate(var(--x), var(--y)) scale(2.2) rotate(720deg); opacity: 0; }
+    }
 
-
-
-
-    /* Animations */
     @keyframes floatRotate {
       0%, 100% { transform: translateY(0) rotate(0deg); }
       25%  { transform: translateY(-10px) rotate(1deg); }
@@ -187,7 +171,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       .teddy-border, .blur-bg {
         width: 220px;
@@ -199,29 +182,50 @@
         padding: 30px 20px;
       }
 
+      h1 {
+        font-size: 22px;
+      }
+
+      p {
+        font-size: 15px;
+      }
+
       input[type="text"] {
-        max-width: 100%;
+        font-size: 15px;
+      }
+
+      button {
+        font-size: 15px;
       }
     }
 
     @media (max-width: 480px) {
       .teddy-border, .blur-bg {
-        width: 180px;
-        height: 180px;
+        width: 160px;
+        height: 160px;
         border-radius: 16px;
       }
 
+      .container {
+        padding: 25px 15px;
+      }
+
       h1 {
-        font-size: 22px;
+        font-size: 20px;
       }
 
       p {
         font-size: 14px;
       }
 
+      input[type="text"] {
+        font-size: 14px;
+        padding: 10px;
+      }
+
       button {
         font-size: 14px;
-        padding: 8px 18px;
+        padding: 8px 16px;
       }
     }
   </style>
@@ -231,7 +235,7 @@
   <div class="teddy-wrapper">
     <div class="blur-bg"></div>
     <div class="teddy-border">
-      <img src="gif2.gif" alt="Cute Teddy Bear" class="teddy" onerror="this.src='fallback.jpg'" />
+      <img src="gif4.gif" alt="Cute Teddy Bear" class="teddy" onerror="this.src='fallback.jpg'" />
     </div>
   </div>
 
@@ -244,6 +248,5 @@
   </div>
 
   <script src="heart.js"></script>
-
 </body>
 </html>
