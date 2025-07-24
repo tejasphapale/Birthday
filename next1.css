@@ -1,0 +1,219 @@
+:root {
+  --main-color: #ff6f61;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  overflow: hidden;
+}
+
+.heart-bg, .confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  color: var(--main-color);
+  font-size: 20px;
+  animation: floatHeart 6s infinite ease-in-out;
+  opacity: 0.6;
+}
+
+@keyframes floatHeart {
+  0% { transform: translateY(100vh) scale(1); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+}
+
+.confetti {
+  background-image: url('https://cdn.pixabay.com/photo/2016/11/18/17/20/confetti-1836396_960_720.png');
+  background-size: cover;
+  opacity: 0.2;
+  animation: float 10s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 1000px; }
+}
+
+.emoji-top {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.teddy {
+  width: 180px;
+  max-width: 30vw;
+  height: auto;
+  animation: floatTeddy 3s ease-in-out infinite;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes floatTeddy {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.message-box {
+  position: relative;
+  background: linear-gradient(135deg, #ffffffcc, #ffd1c1cc);
+  border: 3px solid var(--main-color);
+  border-radius: 20px;
+  margin-top: 10px;
+  padding: 10px;
+  box-shadow: 0 8px 30px rgba(255, 111, 97, 0.4), 0 0 15px 5px rgba(255, 111, 97, 0.6);
+  max-width: 700px;
+  width: 100%;
+  text-align: center;
+  animation: fadeIn 1.5s ease-out;
+  z-index: 1;
+}
+
+.message-box::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  bottom: -10px;
+  left: -10px;
+  right: -10px;
+  border-radius: 30px;
+  background: linear-gradient(270deg, #ff6f61, #fda085, #f6d365, #ff6f61);
+  background-size: 600% 600%;
+  animation: glowing 8s linear infinite;
+  filter: blur(15px);
+  z-index: -1;
+  opacity: 0.7;
+}
+
+h1 {
+  font-size: 2rem;
+  color: var(--main-color);
+  margin-bottom: 20px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+p {
+  font-size: 1rem;
+  color: #444;
+  font-family: 'Courier New', Courier, monospace;
+  margin-top: 20px;
+}
+
+span {
+  display: block;
+  margin: 10px 0;
+}
+
+@keyframes glowing {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.next-button {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: none;
+  animation: fadeIn 1s ease forwards;
+}
+
+.next-button button {
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 111, 97, 0.4);
+  transition: background 0.3s ease;
+}
+
+.next-button button:hover {
+  background-color: #e05547;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  p {
+    font-size: 0.95rem;
+  }
+  .teddy {
+    width: 100px;
+  }
+  .message-box {
+    padding: 20px;
+  }
+}
+
+ #continue-block {
+      display: none;
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .continue-btn {
+      background-color: #ff69b4;
+      color: white;
+      padding: 15px 25px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      animation: bounce 2s infinite;
+      transition: transform 0.2s;
+    }
+
+    .continue-btn:hover {
+      transform: scale(1.1);
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateX(-50%) translateY(30px); }
+      to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+
+    /* Bounce animation */
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Birthday Gift</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    img {
+      width: 200px;
+      animation: bounceRotate 3s ease-in-out infinite;
+      cursor: pointer;
+    }
+
+    @keyframes bounceRotate {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      25% {
+        transform: translateY(-30px) rotate(10deg);
+      }
+      50% {
+        transform: translateY(0) rotate(-10deg);
+      }
+      75% {
+        transform: translateY(-15px) rotate(5deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <img src="g1.png" alt="Birthday Gift" id="giftImage" />
+
+  <script>
+    document.getElementById('giftImage').addEventListener('click', () => {
+      // Redirect to the message input page
+      window.location.href = 'name1.html';
+    });
+  </script>
+</body>
+</html>
