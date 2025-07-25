@@ -1,3 +1,11 @@
+// Mobile viewport fix
+function setRealVh() {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+setRealVh();
+window.addEventListener('resize', setRealVh);
+
 const slidesWrapper = document.getElementById("slidesWrapper");
 const slides = document.querySelectorAll(".slide");
 const totalSlides = slides.length;
@@ -9,6 +17,11 @@ const animationClasses = [
   "anim-bubblePulse",
   "anim-heartbeat",
   "anim-bounce",
+  "anim-zoomInOut",
+  "anim-zoomInOut",
+  "anim-bubblePulse",
+  "anim-heartbeat",
+  "anim-bounce",
   "anim-zoomInOut"
 ];
 
@@ -16,15 +29,14 @@ function playAudioForSlide(index) {
   for (let i = 0; i < totalSlides; i++) {
     const audio = document.getElementById(`audio${i}`);
     const slide = slides[i];
-
     slide.classList.remove("active", ...animationClasses);
 
     if (i === index) {
-      slide.classList.add("active", animationClasses[i]);
+      slide.classList.add("active", animationClasses[i % animationClasses.length]);
       audio.currentTime = 0;
       audio.play().catch(e => console.log("Blocked:", e));
       audio.onended = () => {
-        slide.classList.remove(animationClasses[i]);
+        slide.classList.remove(animationClasses[i % animationClasses.length]);
         changeSlide(1);
       };
     } else {
@@ -59,15 +71,17 @@ document.getElementById("slideshow").addEventListener('touchend', e => {
 // Floating emojis
 const symbolContainer = document.getElementById('floating-symbols');
 const symbols = ['💖', '❤️', '💕', '✨', '🌟', '💘', '🌸'];
+
 function createSymbol() {
   const symbol = document.createElement('div');
   symbol.className = 'floating-symbol';
   symbol.textContent = symbols[Math.floor(Math.random() * symbols.length)];
   symbol.style.left = Math.random() * 100 + 'vw';
   symbol.style.top = '100vh';
-  symbol.style.fontSize = (Math.random() * 18 + 20) + 'px';
-  symbol.style.animationDuration = (Math.random() * 8 + 12) + 's';
+  symbol.style.fontSize = (Math.random() * 12 + 16) + 'px';
+  symbol.style.animationDuration = (Math.random() * 6 + 10) + 's';
   symbolContainer.appendChild(symbol);
   setTimeout(() => symbol.remove(), 15000);
 }
+
 setInterval(createSymbol, 500);
