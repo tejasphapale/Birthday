@@ -69,7 +69,7 @@ body {
   position: relative;
   width: 100%;
   max-width: 340px;
-  height: 480px;
+ aspect-ratio: 3/4;
   overflow: hidden;
   margin-top: 20px;
   border-radius: 28px;
@@ -133,6 +133,6 @@ body {
 
 @media (max-width: 400px) {
   .heading { font-size: 1.4rem; top: 12px; }
-  .slideshow-container { max-width: 90vw; height: 340px; }
+  .slideshow-container { max-width: 90vw; aspect-ratio: 3/4; }
   .caption { font-size: 0.9rem; }
 }
